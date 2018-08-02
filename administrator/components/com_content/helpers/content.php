@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_content
  *
- * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -40,6 +40,12 @@ class ContentHelper extends JHelperContent
 			$vName == 'categories'
 		);
 
+		JHtmlSidebar::addEntry(
+			JText::_('COM_CONTENT_SUBMENU_FEATURED'),
+			'index.php?option=com_content&view=featured',
+			$vName == 'featured'
+		);
+
 		if (JComponentHelper::isEnabled('com_fields') && JComponentHelper::getParams('com_content')->get('custom_fields_enable', '1'))
 		{
 			JHtmlSidebar::addEntry(
@@ -53,12 +59,6 @@ class ContentHelper extends JHelperContent
 				$vName == 'fields.groups'
 			);
 		}
-
-		JHtmlSidebar::addEntry(
-			JText::_('COM_CONTENT_SUBMENU_FEATURED'),
-			'index.php?option=com_content&view=featured',
-			$vName == 'featured'
-		);
 	}
 
 	/**
@@ -91,7 +91,7 @@ class ContentHelper extends JHelperContent
 	/**
 	 * Adds Count Items for Category Manager.
 	 *
-	 * @param   stdClass[]  &$items  The banner category objects
+	 * @param   stdClass[]  $items  The banner category objects
 	 *
 	 * @return  stdClass[]
 	 *
@@ -145,7 +145,7 @@ class ContentHelper extends JHelperContent
 	/**
 	 * Adds Count Items for Tag Manager.
 	 *
-	 * @param   stdClass[]  &$items     The content objects
+	 * @param   stdClass[]  $items      The content objects
 	 * @param   string      $extension  The name of the active view.
 	 *
 	 * @return  stdClass[]
